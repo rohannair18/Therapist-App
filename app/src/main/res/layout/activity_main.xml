@@ -1,0 +1,75 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".MainActivity"
+    android:background="@color/dark_lavender2">
+
+    <TextView
+        android:id="@+id/logo"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:fontFamily="@font/lato_bold"
+        android:text="Ethereal"
+        android:textColor="@color/pale_pink"
+        android:textSize="50dp"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_bias="0.45" />
+
+    <TextView
+        android:id="@+id/quote"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="10dp"
+        android:fontFamily="@font/lato"
+        android:text="@string/quote"
+        android:textColor="@color/pale_pink"
+        android:textSize="12dp"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="@+id/logo"
+        app:layout_constraintStart_toStartOf="@+id/logo"
+        app:layout_constraintTop_toBottomOf="@+id/logo"
+        app:layout_constraintVertical_bias="0.0" />
+
+    <Button
+        android:id="@+id/getstarted"
+        android:layout_width="match_parent"
+        android:layout_height="50dp"
+        android:textSize="15dp"
+        android:layout_marginStart="60dp"
+        android:layout_marginTop="200dp"
+        android:layout_marginEnd="60dp"
+        android:background="@drawable/roundedcircle"
+        android:gravity="center"
+        android:text="GET STARTED"
+        android:textColor="@color/dark_lavender2"
+        app:backgroundTint="@color/pale_pink"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="@+id/quote"
+        app:layout_constraintStart_toStartOf="@+id/quote"
+        app:layout_constraintTop_toBottomOf="@+id/quote"
+        app:layout_constraintVertical_bias="0.40">
+
+    </Button>
+
+    <TextView
+        android:id="@+id/ialready"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:fontFamily="@font/lato_bold"
+        android:layout_marginTop="25dp"
+        android:textColor="@color/pale_pink"
+        android:textSize="13dp"
+        android:text="@string/i_already"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="@+id/quote"
+        app:layout_constraintStart_toStartOf="@+id/quote"
+        app:layout_constraintTop_toBottomOf="@+id/getstarted"
+        app:layout_constraintVertical_bias="0.0" />
+
+</androidx.constraintlayout.widget.ConstraintLayout>
