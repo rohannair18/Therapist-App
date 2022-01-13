@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="utf-8"?>
-<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
@@ -13,11 +13,6 @@
         android:layout_height="match_parent"
         android:layout_above="@id/bottomNavigationView"/>
 
-    <com.google.android.material.appbar.AppBarLayout
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:id="@+id/bottom"
-        android:layout_alignParentBottom="true"/>
 
     <com.google.android.material.bottomnavigation.BottomNavigationView
         android:id="@+id/bottomNavigationView"
@@ -27,10 +22,22 @@
         android:background="@drawable/bottomnav"
         android:elevation="2dp"
         app:itemIconSize="30dp"
-        app:itemTextColor="@color/nav_color"
-        app:itemIconTint="@color/nav_color"
+        app:itemIconTint="@color/pale_pink"
         app:itemRippleColor="@android:color/transparent"
+        app:itemTextColor="@color/dark_lavender2"
         app:labelVisibilityMode="labeled"
         app:menu="@menu/menu" />
+        <com.google.android.material.appbar.AppBarLayout
+            android:id="@+id/bottom"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_alignParentBottom="true"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/fragment_container" />
 
-</androidx.constraintlayout.widget.ConstraintLayout>
+
+
+
+</RelativeLayout>
