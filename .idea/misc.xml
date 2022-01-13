@@ -4,13 +4,16 @@
     <option name="filePathToZoomLevelMap">
       <map>
         <entry key="..\:/Users/nairr/AndroidStudioProjects/EtherealTherapist/app/src/main/res/drawable-v24/home.xml" value="0.2" />
+        <entry key="..\:/Users/nairr/AndroidStudioProjects/EtherealTherapist/app/src/main/res/drawable-v24/profile.xml" value="0.2" />
+        <entry key="..\:/Users/nairr/AndroidStudioProjects/EtherealTherapist/app/src/main/res/drawable/Patients.xml" value="0.2" />
         <entry key="..\:/Users/nairr/AndroidStudioProjects/EtherealTherapist/app/src/main/res/drawable/bottomnav.xml" value="0.20555555555555555" />
+        <entry key="..\:/Users/nairr/AndroidStudioProjects/EtherealTherapist/app/src/main/res/drawable/patient.xml" value="0.2" />
         <entry key="..\:/Users/nairr/AndroidStudioProjects/EtherealTherapist/app/src/main/res/drawable/programs.xml" value="0.2" />
         <entry key="..\:/Users/nairr/AndroidStudioProjects/EtherealTherapist/app/src/main/res/drawable/roundedrectangle.xml" value="0.22037037037037038" />
         <entry key="..\:/Users/nairr/AndroidStudioProjects/EtherealTherapist/app/src/main/res/layout/activity_join.xml" value="0.264" />
         <entry key="..\:/Users/nairr/AndroidStudioProjects/EtherealTherapist/app/src/main/res/layout/activity_login.xml" value="0.25" />
         <entry key="..\:/Users/nairr/AndroidStudioProjects/EtherealTherapist/app/src/main/res/layout/activity_main.xml" value="0.25" />
-        <entry key="..\:/Users/nairr/AndroidStudioProjects/EtherealTherapist/app/src/main/res/layout/activity_start.xml" value="0.35813148788927335" />
+        <entry key="..\:/Users/nairr/AndroidStudioProjects/EtherealTherapist/app/src/main/res/layout/activity_start.xml" value="0.4" />
         <entry key="..\:/Users/nairr/AndroidStudioProjects/EtherealTherapist/app/src/main/res/menu/menu.xml" value="0.19166666666666668" />
       </map>
     </option>

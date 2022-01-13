@@ -22,9 +22,9 @@
         android:background="@drawable/bottomnav"
         android:elevation="2dp"
         app:itemIconSize="30dp"
-        app:itemIconTint="@color/pale_pink"
+        app:itemIconTint="@color/nav_color"
         app:itemRippleColor="@android:color/transparent"
-        app:itemTextColor="@color/dark_lavender2"
+        app:itemTextColor="@color/nav_color"
         app:labelVisibilityMode="labeled"
         app:menu="@menu/menu" />
         <com.google.android.material.appbar.AppBarLayout
