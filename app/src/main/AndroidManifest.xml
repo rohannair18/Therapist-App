@@ -10,20 +10,20 @@
         android:supportsRtl="true"
         android:theme="@style/Theme.EtherealTherapist">
         <activity
+            android:name=".ForgotActivity"
+            android:exported="false" />
+        <activity
             android:name=".StartActivity"
             android:exported="false"
-            android:theme="@style/Theme.Design.NoActionBar"
-            />
+            android:theme="@style/Theme.Design.NoActionBar" />
         <activity
             android:name=".Login"
             android:exported="false"
-            android:theme="@style/Theme.Design.NoActionBar"
-            />
+            android:theme="@style/Theme.Design.NoActionBar" />
         <activity
             android:name=".JoinActivity"
             android:exported="false"
-            android:theme="@style/Theme.Design.NoActionBar"
-            />
+            android:theme="@style/Theme.Design.NoActionBar" />
         <activity
             android:name=".MainActivity"
             android:exported="true"
