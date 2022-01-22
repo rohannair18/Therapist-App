@@ -2,14 +2,20 @@ package com.example.etherealtherapist;
 
 import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
+import androidx.appcompat.app.AppCompatDelegate;
 
 import android.content.Intent;
+import android.os.Build;
 import android.os.Bundle;
 import android.provider.ContactsContract;
 import android.text.TextUtils;
+import android.util.Patterns;
 import android.view.View;
+import android.view.Window;
+import android.view.WindowManager;
 import android.widget.Button;
 import android.widget.EditText;
+import android.widget.ProgressBar;
 import android.widget.TextView;
 import android.widget.Toast;
 
@@ -18,94 +24,154 @@ import com.google.android.gms.tasks.Task;
 import com.google.firebase.auth.AuthResult;
 import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.auth.FirebaseUser;
+import com.google.firebase.auth.SignInMethodQueryResult;
 import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
 
 import java.util.HashMap;
+import io.github.muddz.styleabletoast.StyleableToast;
+import Model.User;
 
-public class JoinActivity extends AppCompatActivity {
-    Button btn1;
-    TextView btn2;
-    EditText Name,email,password;
-    FirebaseAuth auth;
-    DatabaseReference Reference;
+public class JoinActivity extends AppCompatActivity implements View.OnClickListener{
+
+    TextView alreadyjoin;
+    EditText namenickname,emailjoin,passwordjoin;
+    Button submitjoin;
+    ProgressBar progressBar;
+
+    private FirebaseAuth mAuth;
+
+
+    @Override
+    public void onBackPressed() {
+        Intent j = new Intent(JoinActivity.this, StartActivity.class);
+        startActivity(j);
+        super.onBackPressed();
+    }
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
+        AppCompatDelegate.setDefaultNightMode(AppCompatDelegate.MODE_NIGHT_NO);
         setContentView(R.layout.activity_join);
-        btn1=(Button)findViewById(R.id.submitjoin);
-        btn2=(TextView)findViewById(R.id.alreadyjoin);
-        Name=findViewById(R.id.namenickname);
-        email=findViewById(R.id.emailjoin);
-        password=findViewById(R.id.passwordjoin);
-        auth= FirebaseAuth.getInstance();
-        btn1.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-                String txt_name= Name.getText().toString();
-                String txt_email= email.getText().toString();
-                String txt_password=password.getText().toString();
-                if (TextUtils.isEmpty(txt_name) || TextUtils.isEmpty(txt_email) || TextUtils.isEmpty(txt_password))
-                {
-                    Toast.makeText(JoinActivity.this, "All fields are required", Toast.LENGTH_SHORT).show();
-                }else if (txt_password.length() < 6)
-                {
-                    Toast.makeText(JoinActivity.this, "Password must be atleast 6 characters", Toast.LENGTH_SHORT).show();
-                } else {
-                    signup(txt_name, txt_email, txt_password);
-                }
-                //Intent K= new Intent(getApplicationContext(),Login.class);
-                //startActivity(K);
-                
+
+        if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.LOLLIPOP) {
+            Window window = getWindow();
+            window.addFlags(WindowManager.LayoutParams.FLAG_DRAWS_SYSTEM_BAR_BACKGROUNDS);
+            if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.M) {
+                window.setStatusBarColor(getColor(R.color.dark_grey));
             }
-            private void signup (String Name, String email, String password)
-            {
-                auth.createUserWithEmailAndPassword(email, password)
-                        .addOnCompleteListener(new OnCompleteListener<AuthResult>() {
-                            @Override
-                            public void onComplete(@NonNull Task<AuthResult> task) {
-                                if (task.isSuccessful())
-                                {
-                                    FirebaseUser firebaseUser =  auth.getCurrentUser();
-                                    assert firebaseUser != null;
-                                    String userid = firebaseUser.getUid();
+        }
 
-                                    Reference = FirebaseDatabase.getInstance().getReference("Therapists").child(userid);
+        mAuth = FirebaseAuth.getInstance();
 
-                                    HashMap<String, String> hashMap =  new HashMap<>();
-                                    hashMap.put("Name", Name);
-                                    hashMap.put("email", email);
-                                    hashMap.put("password", password);
+        namenickname = (EditText) findViewById(R.id.namenickname);
+        emailjoin = (EditText) findViewById(R.id.emailjoin);
+        passwordjoin = (EditText) findViewById(R.id.passwordjoin);
 
-                                    Reference.setValue(hashMap).addOnCompleteListener(new OnCompleteListener<Void>() {
-                                        @Override
-                                        public void onComplete(@NonNull Task<Void> task) {
-                                            if (task.isSuccessful())
-                                            {
-                                                Intent intent = new Intent(JoinActivity.this, Login.class);
-                                                intent.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TASK | Intent.FLAG_ACTIVITY_NEW_TASK);
-                                                startActivity(intent);
-                                                finish();
-                                            }
-                                        }
-                                    });
-                                } else {
-                                    Toast.makeText(JoinActivity.this, "The email or password entered is incorrect", Toast.LENGTH_SHORT).show();
-                                }
-                            }
-                        });
-            }
-        });
-        
-        btn2.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-                Intent J= new Intent(getApplicationContext(),Login.class);
-                startActivity(J);
-            }
+        submitjoin = (Button) findViewById(R.id.submitjoin);
+        submitjoin.setOnClickListener(this);
 
-        });
+        alreadyjoin = (TextView) findViewById(R.id.alreadyjoin);
+        alreadyjoin.setOnClickListener(this);
+        progressBar = (ProgressBar) findViewById(R.id.progressbar);
+
 
     }
 
-}
+
+    @Override
+    public void onClick(View v) {
+        switch (v.getId()){
+            case R.id.submitjoin:
+                submitjoin();
+                break;
+            case R.id.alreadyjoin:
+                startActivity(new Intent(this, Login.class));
+                break;
+        }
+
+    }
+    private void submitjoin() {
+        String name = namenickname.getText().toString().trim();
+        String email = emailjoin.getText().toString().trim();
+        String password = passwordjoin.getText().toString().trim();
+
+        if(name.isEmpty()){
+            namenickname.setError("This field is required");
+            namenickname.requestFocus();
+            return;
+        }
+
+        if(email.isEmpty()){
+            emailjoin.setError("This field is required");
+            emailjoin.requestFocus();
+            return;
+        }
+        if(!Patterns.EMAIL_ADDRESS.matcher(email).matches()){
+            emailjoin.setError("Please provide a valid email");
+            emailjoin.requestFocus();
+            return;
+        }
+        if(password.isEmpty()){
+            passwordjoin.setError("This field is required");
+            passwordjoin.requestFocus();
+            return;
+        }
+        if(password.length() < 6){
+            passwordjoin.setError("Min password length should be 6 characters");
+            passwordjoin.requestFocus();
+            return;
+        }
+        {
+            mAuth.fetchSignInMethodsForEmail(emailjoin.getText().toString())
+                    .addOnCompleteListener(new OnCompleteListener<SignInMethodQueryResult>() {
+                        @Override
+                        public void onComplete(@NonNull Task<SignInMethodQueryResult> task) {
+                            boolean check = !task.getResult().getSignInMethods().isEmpty();
+                            if(check)
+                            {
+                                StyleableToast.makeText(getApplicationContext(), "Email already exists", R.style.customtoast).show();
+                                progressBar.setVisibility(View.GONE);
+                            }
+                        }
+                    });
+        }
+        progressBar.setVisibility(View.VISIBLE);
+        mAuth.createUserWithEmailAndPassword(email, password).addOnCompleteListener(new OnCompleteListener<AuthResult>() {
+            @Override
+            public void onComplete(@NonNull Task<AuthResult> task) {
+                if (task.isSuccessful()){
+                    User user = new User(name,email,password);
+                    FirebaseDatabase.getInstance().getReference("Therapists")
+                            .child(FirebaseAuth.getInstance().getCurrentUser().getUid())
+                            .setValue(user).addOnCompleteListener(new OnCompleteListener<Void>() {
+
+
+                        @Override
+                        public void onComplete(@NonNull Task<Void> task) {
+                            if (task.isSuccessful()) {
+                                FirebaseUser user = FirebaseAuth.getInstance().getCurrentUser();
+                                progressBar.setVisibility(View.GONE);
+
+                                if (user.isEmailVerified()) {
+                                    startActivity(new Intent(JoinActivity.this, MainActivity.class));
+                                }
+                                else {
+                                    user.sendEmailVerification();
+                                    StyleableToast.makeText(JoinActivity.this, "Check your email to verify your account", R.style.customtoast).show();
+                                    progressBar.setVisibility(View.GONE);
+                                }
+                                if(!task.isSuccessful())
+                                {
+                                    StyleableToast.makeText(JoinActivity.this, "Failed to sign up", R.style.customtoast).show();
+                                    progressBar.setVisibility(View.GONE);
+                                }
+                            }
+                        }
+
+                    });
+                }
+            }
+        });
+    }}

@@ -36,7 +36,7 @@ public class Login extends AppCompatActivity implements View.OnClickListener{
 
     @Override
     public void onBackPressed() {
-        Intent j = new Intent(Login.this, StartActivity.class);
+        Intent j = new Intent(Login.this, MainActivity.class);
         startActivity(j);
         super.onBackPressed();
     }
