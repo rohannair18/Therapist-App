@@ -10,6 +10,10 @@
         android:supportsRtl="true"
         android:theme="@style/Theme.EtherealTherapist">
         <activity
+            android:name=".MainActivity"
+            android:exported="false"
+            android:theme="@style/Theme.Design.NoActionBar" />
+        <activity
             android:name=".ForgotActivity"
             android:exported="false"
             android:theme="@style/Theme.Design.NoActionBar" />
@@ -26,7 +30,7 @@
             android:exported="false"
             android:theme="@style/Theme.Design.NoActionBar" />
         <activity
-            android:name=".MainActivity"
+            android:name=".SplashActivity"
             android:exported="true"
             android:theme="@style/Theme.Design.NoActionBar">
             <intent-filter>
