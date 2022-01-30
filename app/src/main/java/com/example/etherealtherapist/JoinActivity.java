@@ -44,7 +44,7 @@ public class JoinActivity extends AppCompatActivity implements View.OnClickListe
 
     @Override
     public void onBackPressed() {
-        Intent j = new Intent(JoinActivity.this, StartActivity.class);
+        Intent j = new Intent(JoinActivity.this, MainActivity.class);
         startActivity(j);
         super.onBackPressed();
     }
