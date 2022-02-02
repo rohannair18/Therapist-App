@@ -3,6 +3,7 @@
     xmlns:app="http://schemas.android.com/apk/res-auto"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+    android:background="@color/dark_lavender"
     tools:context="Fragments.HomeFragment">
 
 
@@ -63,30 +64,29 @@
         android:layout_height="match_parent"
         android:layout_below="@id/appbar">
 
-        <LinearLayout
+        <com.google.android.material.card.MaterialCardView
             android:layout_width="wrap_content"
-            android:layout_height="400dp"
-            android:layout_margin="20dp"
-            android:background="@drawable/bg_calendar"
-            android:backgroundTint="@color/lavender">
+            android:layout_height="wrap_content"
+            app:cardCornerRadius="10dp"
+            android:layout_margin="20dp">
+
 
             <com.github.sundeepk.compactcalendarview.CompactCalendarView
                 xmlns:app="http://schemas.android.com/apk/res-auto"
                 android:id="@+id/compactcalendar_view"
-                android:layout_width="fill_parent"
-                android:layout_height="250dp"
-                android:paddingLeft="10dp"
-                android:paddingRight="10dp"
+                android:layout_width="wrap_content"
+                android:layout_margin="20dp"
+                android:layout_height="310dp"
                 app:compactCalendarBackgroundColor="@color/pale_pink"
                 app:compactCalendarCurrentDayBackgroundColor="@color/pale_lavender"
                 app:compactCalendarCurrentSelectedDayBackgroundColor="@color/lavender"
                 app:compactCalendarCurrentSelectedDayTextColor="@color/pale_pink"
                 app:compactCalendarMultiEventIndicatorColor="#fff"
-                app:compactCalendarTargetHeight="200dp"
+                app:compactCalendarTargetHeight="360dp"
                 app:compactCalendarTextColor="@color/black"
                 app:compactCalendarTextSize="12sp" />
 
-        </LinearLayout>
+        </com.google.android.material.card.MaterialCardView>
 
 
     </androidx.core.widget.NestedScrollView>
