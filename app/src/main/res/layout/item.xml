@@ -2,16 +2,16 @@
 <androidx.cardview.widget.CardView xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     android:layout_width="match_parent"
-    android:layout_height="wrap_content"
-    app:cardCornerRadius="16dp"
-    app:cardElevation="8dp"
-    android:layout_marginBottom="10dp"
+    android:layout_height="200dp"
+    app:cardCornerRadius="20dp"
+    app:cardElevation="0dp"
+    android:layout_marginEnd="30dp"
+    android:layout_marginBottom="30dp"
     android:backgroundTint="@color/pale_lavender">
 
     <LinearLayout
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginLeft="16dp"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
         android:orientation="vertical">
 
         <LinearLayout
@@ -24,10 +24,12 @@
                 android:id="@+id/Username"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
+                android:layout_marginStart="15dp"
+                android:layout_marginTop="15dp"
                 android:fontFamily="@font/lato"
                 android:text="Username:"
                 android:textColor="@color/black"
-                android:textSize="26dp"
+                android:textSize="18dp"
                 android:textStyle="bold">
 
             </TextView>
@@ -36,10 +38,12 @@
                 android:id="@+id/UsernameValue"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
+                android:layout_marginStart="15dp"
+                android:layout_marginTop="15dp"
                 android:fontFamily="@font/lato"
                 android:text="Rohan"
                 android:textColor="@color/black"
-                android:textSize="26dp"
+                android:textSize="18dp"
                 android:textStyle="bold">
 
             </TextView>
@@ -55,10 +59,12 @@
                 android:id="@+id/Email"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
+                android:layout_marginStart="15dp"
+                android:layout_marginTop="15dp"
                 android:fontFamily="@font/lato"
                 android:text="Email:"
                 android:textColor="@color/black"
-                android:textSize="26dp"
+                android:textSize="18dp"
                 android:textStyle="bold">
 
             </TextView>
@@ -67,10 +73,12 @@
                 android:id="@+id/EmailValue"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
+                android:layout_marginStart="15dp"
+                android:layout_marginTop="15dp"
                 android:fontFamily="@font/lato"
                 android:text="nairrohan18@gmail.com"
                 android:textColor="@color/black"
-                android:textSize="26dp"
+                android:textSize="18dp"
                 android:textStyle="bold">
 
             </TextView>

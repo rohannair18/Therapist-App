@@ -58,5 +58,38 @@
         </androidx.appcompat.widget.Toolbar>
     </com.google.android.material.appbar.AppBarLayout>
 
+    <androidx.core.widget.NestedScrollView
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:layout_below="@id/appbar">
+
+        <LinearLayout
+            android:layout_width="wrap_content"
+            android:layout_height="400dp"
+            android:layout_margin="20dp"
+            android:background="@drawable/bg_calendar"
+            android:backgroundTint="@color/lavender">
+
+            <com.github.sundeepk.compactcalendarview.CompactCalendarView
+                xmlns:app="http://schemas.android.com/apk/res-auto"
+                android:id="@+id/compactcalendar_view"
+                android:layout_width="fill_parent"
+                android:layout_height="250dp"
+                android:paddingLeft="10dp"
+                android:paddingRight="10dp"
+                app:compactCalendarBackgroundColor="@color/pale_pink"
+                app:compactCalendarCurrentDayBackgroundColor="@color/pale_lavender"
+                app:compactCalendarCurrentSelectedDayBackgroundColor="@color/lavender"
+                app:compactCalendarCurrentSelectedDayTextColor="@color/pale_pink"
+                app:compactCalendarMultiEventIndicatorColor="#fff"
+                app:compactCalendarTargetHeight="200dp"
+                app:compactCalendarTextColor="@color/black"
+                app:compactCalendarTextSize="12sp" />
+
+        </LinearLayout>
+
+
+    </androidx.core.widget.NestedScrollView>
+
 
 </RelativeLayout>

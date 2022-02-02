@@ -5,14 +5,18 @@
       <map>
         <entry key="..\:/Users/nairr/AndroidStudioProjects/EtherealTherapist/app/src/main/res/drawable-v24/back.xml" value="0.14322916666666666" />
         <entry key="..\:/Users/nairr/AndroidStudioProjects/EtherealTherapist/app/src/main/res/drawable-v24/bg_calendar.xml" value="0.26614583333333336" />
+        <entry key="..\:/Users/nairr/AndroidStudioProjects/EtherealTherapist/app/src/main/res/drawable-v24/edit.xml" value="0.1485" />
         <entry key="..\:/Users/nairr/AndroidStudioProjects/EtherealTherapist/app/src/main/res/drawable-v24/home.xml" value="0.2" />
+        <entry key="..\:/Users/nairr/AndroidStudioProjects/EtherealTherapist/app/src/main/res/drawable-v24/logout.xml" value="0.1485" />
         <entry key="..\:/Users/nairr/AndroidStudioProjects/EtherealTherapist/app/src/main/res/drawable-v24/notifications.xml" value="0.26614583333333336" />
         <entry key="..\:/Users/nairr/AndroidStudioProjects/EtherealTherapist/app/src/main/res/drawable-v24/profile.xml" value="0.2" />
         <entry key="..\:/Users/nairr/AndroidStudioProjects/EtherealTherapist/app/src/main/res/drawable/Patients.xml" value="0.2" />
+        <entry key="..\:/Users/nairr/AndroidStudioProjects/EtherealTherapist/app/src/main/res/drawable/bg_calendar.xml" value="0.1485" />
         <entry key="..\:/Users/nairr/AndroidStudioProjects/EtherealTherapist/app/src/main/res/drawable/bottomnav.xml" value="0.20555555555555555" />
         <entry key="..\:/Users/nairr/AndroidStudioProjects/EtherealTherapist/app/src/main/res/drawable/patient.xml" value="0.2" />
         <entry key="..\:/Users/nairr/AndroidStudioProjects/EtherealTherapist/app/src/main/res/drawable/programs.xml" value="0.2" />
         <entry key="..\:/Users/nairr/AndroidStudioProjects/EtherealTherapist/app/src/main/res/drawable/roundedrectangle.xml" value="0.22037037037037038" />
+        <entry key="..\:/Users/nairr/AndroidStudioProjects/EtherealTherapist/app/src/main/res/layout/activity_edit.xml" value="0.25" />
         <entry key="..\:/Users/nairr/AndroidStudioProjects/EtherealTherapist/app/src/main/res/layout/activity_forgot.xml" value="0.24615384615384617" />
         <entry key="..\:/Users/nairr/AndroidStudioProjects/EtherealTherapist/app/src/main/res/layout/activity_join.xml" value="0.264" />
         <entry key="..\:/Users/nairr/AndroidStudioProjects/EtherealTherapist/app/src/main/res/layout/activity_login.xml" value="0.25" />
@@ -20,7 +24,7 @@
         <entry key="..\:/Users/nairr/AndroidStudioProjects/EtherealTherapist/app/src/main/res/layout/activity_splash.xml" value="0.25" />
         <entry key="..\:/Users/nairr/AndroidStudioProjects/EtherealTherapist/app/src/main/res/layout/activity_start.xml" value="0.4" />
         <entry key="..\:/Users/nairr/AndroidStudioProjects/EtherealTherapist/app/src/main/res/layout/activity_userlist.xml" value="0.25" />
-        <entry key="..\:/Users/nairr/AndroidStudioProjects/EtherealTherapist/app/src/main/res/layout/fragment_home.xml" value="0.25" />
+        <entry key="..\:/Users/nairr/AndroidStudioProjects/EtherealTherapist/app/src/main/res/layout/fragment_home.xml" value="0.4" />
         <entry key="..\:/Users/nairr/AndroidStudioProjects/EtherealTherapist/app/src/main/res/layout/fragment_journal.xml" value="0.25" />
         <entry key="..\:/Users/nairr/AndroidStudioProjects/EtherealTherapist/app/src/main/res/layout/fragment_notification.xml" value="0.25" />
         <entry key="..\:/Users/nairr/AndroidStudioProjects/EtherealTherapist/app/src/main/res/layout/fragment_patient.xml" value="0.25" />

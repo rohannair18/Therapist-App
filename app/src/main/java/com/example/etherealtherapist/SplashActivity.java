@@ -13,6 +13,7 @@ import pl.droidsonroids.gif.GifImageView;
 public class SplashActivity extends AppCompatActivity {
     Animation anim;
     GifImageView pandasplash;
+    Intent Intent;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -32,4 +33,5 @@ public class SplashActivity extends AppCompatActivity {
             }
         }, 3000);
     }
+
 }
