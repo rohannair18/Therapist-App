@@ -1,0 +1,24 @@
+<?xml version="1.0" encoding="utf-8"?>
+<menu xmlns:android="http://schemas.android.com/apk/res/android">
+    <item
+        android:id="@+id/home"
+        android:icon="@drawable/home"
+        android:title="Home"
+        android:iconTint="@color/dark_lavender2"/>
+    <item
+        android:id="@+id/Programs"
+        android:icon="@drawable/programs"
+        android:title="Programs"
+        android:iconTint="@color/dark_lavender2"/>
+    <item
+        android:id="@+id/Patients"
+        android:icon="@drawable/patient"
+        android:title="Patients"
+        android:iconTint="@color/dark_lavender2"/>
+    <item
+        android:id="@+id/Profile"
+        android:icon="@drawable/profile"
+        android:title="Profile"
+        android:iconTint="@color/dark_lavender2"/>
+
+</menu>
