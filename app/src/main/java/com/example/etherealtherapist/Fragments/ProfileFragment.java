@@ -1,4 +1,4 @@
-package Fragments;
+package com.example.etherealtherapist.Fragments;
 
 import android.os.Bundle;
 

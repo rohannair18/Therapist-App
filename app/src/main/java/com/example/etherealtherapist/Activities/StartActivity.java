@@ -1,4 +1,11 @@
-package com.example.etherealtherapist;
+package com.example.etherealtherapist.Activities;
+
+import android.os.Build;
+import android.os.Bundle;
+import android.view.MenuItem;
+import android.view.View;
+import android.view.Window;
+import android.view.WindowManager;
 
 import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
@@ -7,21 +14,14 @@ import androidx.fragment.app.Fragment;
 import androidx.fragment.app.FragmentManager;
 import androidx.fragment.app.FragmentTransaction;
 
-import android.content.Intent;
-import android.os.Build;
-import android.os.Bundle;
-import android.view.MenuItem;
-import android.view.View;
-import android.view.Window;
-import android.view.WindowManager;
-
+import com.example.etherealtherapist.R;
 import com.google.android.material.bottomnavigation.BottomNavigationView;
 import com.google.android.material.navigation.NavigationBarView;
 
-import Fragments.HomeFragment;
-import Fragments.PatientFragment;
-import Fragments.ProfileFragment;
-import Fragments.ProgramFragment;
+import com.example.etherealtherapist.Fragments.HomeFragment;
+import com.example.etherealtherapist.Fragments.PatientFragment;
+import com.example.etherealtherapist.Fragments.ProfileFragment;
+import com.example.etherealtherapist.Fragments.ProgramFragment;
 import io.github.muddz.styleabletoast.StyleableToast;
 
 public class StartActivity extends AppCompatActivity {

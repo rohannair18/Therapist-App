@@ -1,4 +1,4 @@
-package com.example.etherealtherapist;
+package com.example.etherealtherapist.Activities;
 
 import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
@@ -7,8 +7,6 @@ import androidx.appcompat.app.AppCompatDelegate;
 import android.content.Intent;
 import android.os.Build;
 import android.os.Bundle;
-import android.provider.ContactsContract;
-import android.text.TextUtils;
 import android.util.Patterns;
 import android.view.View;
 import android.view.Window;
@@ -17,20 +15,19 @@ import android.widget.Button;
 import android.widget.EditText;
 import android.widget.ProgressBar;
 import android.widget.TextView;
-import android.widget.Toast;
 
+import com.example.etherealtherapist.Model.Therapist;
+import com.example.etherealtherapist.R;
+import com.example.etherealtherapist.Model.User;
 import com.google.android.gms.tasks.OnCompleteListener;
 import com.google.android.gms.tasks.Task;
 import com.google.firebase.auth.AuthResult;
 import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.auth.FirebaseUser;
 import com.google.firebase.auth.SignInMethodQueryResult;
-import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
 
-import java.util.HashMap;
 import io.github.muddz.styleabletoast.StyleableToast;
-import Model.User;
 
 public class JoinActivity extends AppCompatActivity implements View.OnClickListener{
 
@@ -57,9 +54,11 @@ public class JoinActivity extends AppCompatActivity implements View.OnClickListe
 
         if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.LOLLIPOP) {
             Window window = getWindow();
+            View decor = getWindow().getDecorView();
             window.addFlags(WindowManager.LayoutParams.FLAG_DRAWS_SYSTEM_BAR_BACKGROUNDS);
             if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.M) {
-                window.setStatusBarColor(getColor(R.color.dark_grey));
+                window.setStatusBarColor(getColor(R.color.dark_lavender2));
+                decor.setSystemUiVisibility(0);
             }
         }
 
@@ -87,7 +86,7 @@ public class JoinActivity extends AppCompatActivity implements View.OnClickListe
                 submitjoin();
                 break;
             case R.id.alreadyjoin:
-                startActivity(new Intent(this, Login.class));
+                startActivity(new Intent(this, LoginActivity.class));
                 break;
         }
 
@@ -142,10 +141,10 @@ public class JoinActivity extends AppCompatActivity implements View.OnClickListe
             @Override
             public void onComplete(@NonNull Task<AuthResult> task) {
                 if (task.isSuccessful()){
-                    User user = new User(name,email,password);
+                    Therapist therapist = new Therapist(name,email,password);
                     FirebaseDatabase.getInstance().getReference("Therapists")
                             .child(FirebaseAuth.getInstance().getCurrentUser().getUid())
-                            .setValue(user).addOnCompleteListener(new OnCompleteListener<Void>() {
+                            .setValue(therapist).addOnCompleteListener(new OnCompleteListener<Void>() {
 
 
                         @Override

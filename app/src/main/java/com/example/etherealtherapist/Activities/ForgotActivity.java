@@ -1,7 +1,8 @@
-package com.example.etherealtherapist;
+package com.example.etherealtherapist.Activities;
 
 import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
+import androidx.appcompat.app.AppCompatDelegate;
 
 import android.content.Intent;
 import android.os.Build;
@@ -15,6 +16,7 @@ import android.widget.EditText;
 import android.widget.ProgressBar;
 import android.widget.Toast;
 
+import com.example.etherealtherapist.R;
 import com.google.android.gms.tasks.OnCompleteListener;
 import com.google.android.gms.tasks.Task;
 import com.google.android.material.card.MaterialCardView;
@@ -34,14 +36,19 @@ public class ForgotActivity extends AppCompatActivity {
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
+        AppCompatDelegate.setDefaultNightMode(AppCompatDelegate.MODE_NIGHT_NO);
         setContentView(R.layout.activity_forgot);
 
         if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.LOLLIPOP) {
             Window window = getWindow();
+            View decor = getWindow().getDecorView();
             window.addFlags(WindowManager.LayoutParams.FLAG_DRAWS_SYSTEM_BAR_BACKGROUNDS);
             if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.M) {
-                window.setStatusBarColor(getColor(R.color.dark_grey));
+                window.setStatusBarColor(getColor(R.color.dark_lavender2));
+                decor.setSystemUiVisibility(0);
             }
+        }
+
             forgotemail = findViewById(R.id.forgotemail);
             forgotreset = findViewById(R.id.forgotreset);
             forgotprogressbar = findViewById(R.id.forgotprogressbar);
@@ -50,7 +57,7 @@ public class ForgotActivity extends AppCompatActivity {
             forgotback.setOnClickListener(new View.OnClickListener() {
                 @Override
                 public void onClick(View v) {
-                    Intent i = new Intent(ForgotActivity.this, Login.class);
+                    Intent i = new Intent(ForgotActivity.this, LoginActivity.class);
                     startActivity(i);
                 }
             });
@@ -63,7 +70,7 @@ public class ForgotActivity extends AppCompatActivity {
                 }
             });
         }
-    }
+
 
     private void reset() {
         String email = forgotemail.getText().toString().trim();
