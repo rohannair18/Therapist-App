@@ -1,4 +1,4 @@
-package com.example.etherealtherapist;
+package com.example.etherealtherapist.HelperClasses;
 
 import android.content.Context;
 import android.view.LayoutInflater;
@@ -8,6 +8,9 @@ import android.widget.TextView;
 
 import androidx.annotation.NonNull;
 import androidx.recyclerview.widget.RecyclerView;
+
+import com.example.etherealtherapist.Model.User;
+import com.example.etherealtherapist.R;
 
 import java.util.ArrayList;
 

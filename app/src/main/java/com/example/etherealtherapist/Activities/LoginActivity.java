@@ -1,4 +1,4 @@
-package com.example.etherealtherapist;
+package com.example.etherealtherapist.Activities;
 
 import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
@@ -7,7 +7,6 @@ import androidx.appcompat.app.AppCompatDelegate;
 import android.content.Intent;
 import android.os.Build;
 import android.os.Bundle;
-import android.text.TextUtils;
 import android.util.Patterns;
 import android.view.View;
 import android.view.Window;
@@ -16,17 +15,18 @@ import android.widget.Button;
 import android.widget.EditText;
 import android.widget.ProgressBar;
 import android.widget.TextView;
-import android.widget.Toast;
 
+import com.example.etherealtherapist.R;
 import com.google.android.gms.tasks.OnCompleteListener;
 import com.google.android.gms.tasks.Task;
 import com.google.firebase.auth.AuthResult;
 import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.auth.FirebaseUser;
+
 import io.github.muddz.styleabletoast.StyleableToast;
 
 
-public class Login extends AppCompatActivity implements View.OnClickListener{
+public class LoginActivity extends AppCompatActivity implements View.OnClickListener{
 
     EditText emailsignin, passwordsignin;
     TextView dontsignin, forgotpassword;
@@ -36,7 +36,7 @@ public class Login extends AppCompatActivity implements View.OnClickListener{
 
     @Override
     public void onBackPressed() {
-        Intent j = new Intent(Login.this, MainActivity.class);
+        Intent j = new Intent(LoginActivity.this, MainActivity.class);
         startActivity(j);
         super.onBackPressed();
     }
@@ -49,9 +49,11 @@ public class Login extends AppCompatActivity implements View.OnClickListener{
 
         if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.LOLLIPOP) {
             Window window = getWindow();
+            View decor = getWindow().getDecorView();
             window.addFlags(WindowManager.LayoutParams.FLAG_DRAWS_SYSTEM_BAR_BACKGROUNDS);
             if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.M) {
-                window.setStatusBarColor(getColor(R.color.dark_grey));
+                window.setStatusBarColor(getColor(R.color.dark_lavender2));
+                decor.setSystemUiVisibility(0);
             }
         }
 
@@ -121,14 +123,14 @@ public class Login extends AppCompatActivity implements View.OnClickListener{
                             progressBar.setVisibility(View.GONE);
 
                             if (user.isEmailVerified()) {
-                                StyleableToast.makeText(Login.this, "Let's get started!", R.style.customtoast).show();
-                                Intent intent = new Intent(Login.this, StartActivity.class);
+                                StyleableToast.makeText(LoginActivity.this, "Let's get started!", R.style.customtoast).show();
+                                Intent intent = new Intent(LoginActivity.this, StartActivity.class);
                                 intent.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TASK | Intent.FLAG_ACTIVITY_CLEAR_TOP);
                                 startActivity(intent);
                                 finish();
                             }
                         }else {
-                            StyleableToast.makeText(Login.this, "Failed to sign in! Please check your credentials", R.style.customtoast).show();
+                            StyleableToast.makeText(LoginActivity.this, "Failed to sign in! Please check your credentials", R.style.customtoast).show();
                             progressBar.setVisibility(View.GONE);
                         }
                     }

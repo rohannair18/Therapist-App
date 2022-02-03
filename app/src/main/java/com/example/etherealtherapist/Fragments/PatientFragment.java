@@ -1,4 +1,4 @@
-package Fragments;
+package com.example.etherealtherapist.Fragments;
 
 import android.os.Bundle;
 
@@ -11,9 +11,9 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 
-import com.example.etherealtherapist.MyAdapter;
+import com.example.etherealtherapist.HelperClasses.MyAdapter;
 import com.example.etherealtherapist.R;
-import com.example.etherealtherapist.User;
+import com.example.etherealtherapist.Model.User;
 import com.google.firebase.database.DataSnapshot;
 import com.google.firebase.database.DatabaseError;
 import com.google.firebase.database.DatabaseReference;

@@ -10,32 +10,26 @@
         android:supportsRtl="true"
         android:theme="@style/Theme.EtherealTherapist" >
         <activity
-            android:name=".EditActivity"
-            android:exported="false" />
+            android:name="com.example.etherealtherapist.Activities.EditActivity"
+            android:exported="true" />
         <activity
-            android:name=".MainActivity"
-            android:exported="false"
-            android:theme="@style/Theme.Design.NoActionBar" />
+            android:name="com.example.etherealtherapist.Activities.MainActivity"
+            android:exported="true" />
         <activity
-            android:name=".ForgotActivity"
-            android:exported="false"
-            android:theme="@style/Theme.Design.NoActionBar" />
+            android:name="com.example.etherealtherapist.Activities.ForgotActivity"
+            android:exported="true" />
         <activity
-            android:name=".StartActivity"
-            android:exported="false"
-            android:theme="@style/Theme.Design.NoActionBar" />
+            android:name="com.example.etherealtherapist.Activities.StartActivity"
+            android:exported="true" />
         <activity
-            android:name=".Login"
-            android:exported="false"
-            android:theme="@style/Theme.Design.NoActionBar" />
+            android:name="com.example.etherealtherapist.Activities.LoginActivity"
+            android:exported="true" />
         <activity
-            android:name=".JoinActivity"
-            android:exported="false"
-            android:theme="@style/Theme.Design.NoActionBar" />
+            android:name="com.example.etherealtherapist.Activities.JoinActivity"
+            android:exported="true" />
         <activity
-            android:name=".SplashActivity"
-            android:exported="true"
-            android:theme="@style/Theme.Design.NoActionBar" >
+            android:name="com.example.etherealtherapist.Activities.SplashActivity"
+            android:exported="true" >
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
 
