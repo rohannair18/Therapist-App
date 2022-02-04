@@ -62,7 +62,8 @@
     <androidx.core.widget.NestedScrollView
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        android:layout_below="@id/appbar">
+        android:layout_below="@id/appbar"
+        android:layout_marginTop="59dp">
 
         <com.google.android.material.card.MaterialCardView
             android:layout_width="wrap_content"
@@ -71,12 +72,23 @@
             app:cardBackgroundColor="@color/pale_pink"
             app:cardCornerRadius="10dp">
 
+            <TextView
+                android:id="@+id/MonthYear"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center_horizontal"
+                android:layout_marginTop="25dp"
+                android:textSize="13dp"
+                android:textColor="@color/black"/>
 
             <com.github.sundeepk.compactcalendarview.CompactCalendarView
                 android:id="@+id/compactcalendar_view"
                 android:layout_width="wrap_content"
-                android:layout_height="310dp"
-                android:layout_margin="20dp"
+                android:layout_height="300dp"
+                android:layout_marginTop="60dp"
+                android:layout_marginStart="20dp"
+                android:layout_marginEnd="20dp"
+                android:layout_marginBottom="20dp"
                 app:compactCalendarBackgroundColor="@color/pale_pink"
                 app:compactCalendarCurrentDayBackgroundColor="@color/pale_lavender"
                 app:compactCalendarCurrentSelectedDayBackgroundColor="@color/lavender"
@@ -90,6 +102,7 @@
 
 
     </androidx.core.widget.NestedScrollView>
+
 
 
 </RelativeLayout>

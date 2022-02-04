@@ -1,11 +1,10 @@
-<FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     tools:context="com.example.etherealtherapist.Fragments.ProfileFragment">
 
-    <!-- TODO: Update blank fragment layout -->
     <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
@@ -31,7 +30,7 @@
                     android:layout_marginEnd="10dp"
                     android:layout_toLeftOf="@id/logout"
                     android:background="@drawable/edit"
-                    android:backgroundTint="@color/grey" />
+                    android:backgroundTint="@color/pale_pink" />
 
                 <ImageView
                     android:id="@+id/logout"
@@ -41,7 +40,7 @@
                     android:layout_marginTop="27dp"
                     android:layout_marginEnd="10dp"
                     android:background="@drawable/logout"
-                    android:backgroundTint="@color/grey"
+                    android:backgroundTint="@color/pale_pink"
                     android:hapticFeedbackEnabled="true" />
 
             </RelativeLayout>
@@ -87,36 +86,38 @@
     </LinearLayout>
 
     <com.google.android.material.tabs.TabLayout
-        android:layout_width="match_parent"
         android:id="@+id/tablayout"
+        android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_below="@id/top"
         android:layout_marginStart="10dp"
         android:layout_marginTop="20dp"
         android:layout_marginEnd="10dp"
-        app:tabIndicatorColor="@color/pink"
-        app:tabRippleColor="@color/mild_grey"
-        app:tabSelectedTextColor="@color/lavender"
-        app:tabTextAppearance="@style/MyCustomTextAppearance"
-        app:tabTextColor="@color/grey">
-
+        android:backgroundTint="@color/dark_lavender2"
+        android:fontFamily="@font/lato"
+        android:textAllCaps="false"
+        app:tabIndicatorColor="@color/pale_pink"
+        app:tabSelectedTextColor="@color/pale_pink"
+        app:tabTextColor="@color/lavender">
 
         <com.google.android.material.tabs.TabItem
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="Notifications" />
+            android:text="Notification" />
 
         <com.google.android.material.tabs.TabItem
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:text="Journal" />
+
+
     </com.google.android.material.tabs.TabLayout>
 
     <androidx.viewpager.widget.ViewPager
         android:id="@+id/viewpager"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        android:layout_below="@id/tablayout" />
+        android:layout_below="@id/tablayout"
+        />
 
-
-</FrameLayout>
+</RelativeLayout>
