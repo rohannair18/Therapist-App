@@ -25,12 +25,12 @@
                     android:id="@+id/edit"
                     android:layout_width="23dp"
                     android:layout_height="23dp"
-                    android:hapticFeedbackEnabled="true"
                     android:layout_marginTop="27dp"
                     android:layout_marginEnd="10dp"
                     android:layout_toLeftOf="@id/logout"
                     android:background="@drawable/edit"
-                    android:backgroundTint="@color/pale_pink" />
+                    android:backgroundTint="@color/pale_pink"
+                    android:hapticFeedbackEnabled="true" />
 
                 <ImageView
                     android:id="@+id/logout"
@@ -77,6 +77,7 @@
                 android:text=""
                 android:layout_gravity="center"
                 android:layout_marginTop="20dp"
+                android:textColor="@color/pale_pink"
                 android:fontFamily="@font/lato"
                 android:textSize="20dp" />
 

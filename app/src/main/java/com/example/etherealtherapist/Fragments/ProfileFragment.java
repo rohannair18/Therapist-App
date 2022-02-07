@@ -3,6 +3,7 @@ package com.example.etherealtherapist.Fragments;
 import android.content.Intent;
 import android.os.Bundle;
 
+import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
 import androidx.appcompat.app.AppCompatDelegate;
 import androidx.fragment.app.Fragment;
@@ -16,13 +17,19 @@ import android.widget.TextView;
 import androidx.viewpager.widget.ViewPager;
 
 
+import com.example.etherealtherapist.Activities.EditActivity;
 import com.example.etherealtherapist.Activities.MainActivity;
 import com.example.etherealtherapist.HelperClasses.ViewPagerAdapter;
+import com.example.etherealtherapist.Model.Therapist;
 import com.example.etherealtherapist.R;
 import com.google.android.material.tabs.TabLayout;
 import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.auth.FirebaseUser;
+import com.google.firebase.database.DataSnapshot;
+import com.google.firebase.database.DatabaseError;
 import com.google.firebase.database.DatabaseReference;
+import com.google.firebase.database.FirebaseDatabase;
+import com.google.firebase.database.ValueEventListener;
 
 
 public class ProfileFragment extends Fragment {
@@ -48,6 +55,7 @@ public class ProfileFragment extends Fragment {
         tabLayout = view.findViewById(R.id.tablayout);
         viewPager = view.findViewById(R.id.viewpager);
         logout = view.findViewById(R.id.logout);
+        edit=view.findViewById(R.id.edit);
         logout.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
@@ -56,6 +64,13 @@ public class ProfileFragment extends Fragment {
                 getActivity().finish();
             }
         });
+        edit.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                startActivity(new Intent(getContext(), EditActivity.class));
+            }
+        });
+        profileName();
         return view;
 
     }
@@ -88,5 +103,20 @@ public class ProfileFragment extends Fragment {
         adapter.addFragment(new JournalFragment(), "Journal");
         viewPager.setAdapter(adapter);
 
+    }
+    private void profileName() {
+
+        FirebaseDatabase.getInstance().getReference().child("Therapists").child(profileId).addValueEventListener(new ValueEventListener() {
+            @Override
+            public void onDataChange(@NonNull DataSnapshot dataSnapshot) {
+                Therapist therapist = dataSnapshot.getValue(Therapist.class);
+                profilename.setText(therapist.getName());
+            }
+
+            @Override
+            public void onCancelled(@NonNull DatabaseError databaseError) {
+
+            }
+        });
     }
 }
