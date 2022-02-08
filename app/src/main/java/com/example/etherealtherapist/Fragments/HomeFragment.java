@@ -3,6 +3,7 @@ package com.example.etherealtherapist.Fragments;
 import android.content.Context;
 import android.os.Bundle;
 
+import androidx.annotation.NonNull;
 import androidx.fragment.app.Fragment;
 
 import android.view.LayoutInflater;
@@ -12,9 +13,16 @@ import android.widget.CalendarView;
 import android.widget.TextView;
 import android.widget.Toast;
 
+import com.example.etherealtherapist.Model.Therapist;
 import com.example.etherealtherapist.R;
 import com.github.sundeepk.compactcalendarview.CompactCalendarView;
 import com.google.android.material.datepicker.CalendarConstraints;
+import com.google.firebase.auth.FirebaseAuth;
+import com.google.firebase.auth.FirebaseUser;
+import com.google.firebase.database.DataSnapshot;
+import com.google.firebase.database.DatabaseError;
+import com.google.firebase.database.FirebaseDatabase;
+import com.google.firebase.database.ValueEventListener;
 
 import java.text.SimpleDateFormat;
 import java.util.Date;
@@ -22,6 +30,9 @@ import java.util.Locale;
 
 public class HomeFragment extends Fragment {
 
+    private TextView heyusername;
+    private FirebaseUser fUser;
+    private String profileId;
     CompactCalendarView compactCalendarView;
     TextView monthyear;
     private SimpleDateFormat dateFormatmonth=new SimpleDateFormat("MMMM- yyyy", Locale.getDefault());
@@ -34,6 +45,9 @@ public class HomeFragment extends Fragment {
         View view=inflater.inflate(R.layout.fragment_home,container,false);
         compactCalendarView=view.findViewById(R.id.compactcalendar_view);
         monthyear=view.findViewById(R.id.MonthYear);
+        fUser = FirebaseAuth.getInstance().getCurrentUser();
+        profileId=fUser.getUid();
+        heyusername=view.findViewById(R.id.heyusername);
         compactCalendarView.setUseThreeLetterAbbreviation(true);
         compactCalendarView.setListener(new CompactCalendarView.CompactCalendarViewListener() {
             @Override
@@ -52,6 +66,23 @@ public class HomeFragment extends Fragment {
                 monthyear.setText(dateFormatmonth.format(firstDayOfNewMonth));
             }
         });
+        helloUser();
         return view;
+    }
+    private void helloUser() {
+
+        FirebaseDatabase.getInstance().getReference().child("Therapists").child(profileId).addValueEventListener(new ValueEventListener() {
+            @Override
+            public void onDataChange(@NonNull DataSnapshot dataSnapshot) {
+                Therapist therapist = dataSnapshot.getValue(Therapist.class);
+
+                heyusername.setText("Hey, " +therapist.getName()+"!");
+            }
+
+            @Override
+            public void onCancelled(@NonNull DatabaseError databaseError) {
+
+            }
+        });
     }
 }

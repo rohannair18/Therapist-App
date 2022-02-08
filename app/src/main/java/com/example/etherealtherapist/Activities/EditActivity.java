@@ -24,7 +24,12 @@ import com.google.firebase.database.ValueEventListener;
 import java.util.HashMap;
 
 public class EditActivity extends AppCompatActivity {
+    private EditText name;
+    private EditText email;
+    private Button save;
 
+    private FirebaseAuth fUser;
+    private MaterialCardView editback;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -39,6 +44,50 @@ public class EditActivity extends AppCompatActivity {
                 decor.setSystemUiVisibility(0);
             }
         }
+        name = findViewById(R.id.nameedit);
+        email = findViewById(R.id.emailedit);
+        save = findViewById(R.id.savechanges);
+
+        fUser = FirebaseAuth.getInstance();
+        editback = findViewById(R.id.editback);
+
+        FirebaseDatabase.getInstance().getReference().child("Therapists").child(fUser.getUid()).addValueEventListener(new ValueEventListener() {
+            @Override
+            public void onDataChange(@NonNull DataSnapshot dataSnapshot) {
+                Therapist therapist = dataSnapshot.getValue(Therapist.class);
+                name.setText(therapist.getName());
+                email.setText(therapist.getEmail());
+            }
+
+            @Override
+            public void onCancelled(@NonNull DatabaseError databaseError) {
+
+            }
+        });
+
+        editback.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                finish();
+            }
+        });
+
+
+        save.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                updateProfile();
+            }
+        });
+
+
+    }
+    private void updateProfile () {
+        HashMap<String, Object> map = new HashMap<>();
+        map.put("name", name.getText().toString());
+        map.put("email", email.getText().toString());
+
+        FirebaseDatabase.getInstance().getReference().child("Therapists").child(fUser.getUid()).updateChildren(map);
 
     }
 }
