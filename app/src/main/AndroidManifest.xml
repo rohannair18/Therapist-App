@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
-    package="com.example.etherealtherapist" >
+    package="com.example.etherealtherapist">
 
     <application
         android:allowBackup="true"
@@ -8,28 +8,31 @@
         android:label="@string/app_name"
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
-        android:theme="@style/Theme.EtherealTherapist" >
+        android:theme="@style/Theme.EtherealTherapist">
         <activity
-            android:name="com.example.etherealtherapist.Activities.EditActivity"
+            android:name=".Activities.NoteEditorActivity"
+            android:exported="false" />
+        <activity
+            android:name=".Activities.EditActivity"
             android:exported="true" />
         <activity
-            android:name="com.example.etherealtherapist.Activities.MainActivity"
+            android:name=".Activities.MainActivity"
             android:exported="true" />
         <activity
-            android:name="com.example.etherealtherapist.Activities.ForgotActivity"
+            android:name=".Activities.ForgotActivity"
             android:exported="true" />
         <activity
-            android:name="com.example.etherealtherapist.Activities.StartActivity"
+            android:name=".Activities.StartActivity"
             android:exported="true" />
         <activity
-            android:name="com.example.etherealtherapist.Activities.LoginActivity"
+            android:name=".Activities.LoginActivity"
             android:exported="true" />
         <activity
-            android:name="com.example.etherealtherapist.Activities.JoinActivity"
+            android:name=".Activities.JoinActivity"
             android:exported="true" />
         <activity
-            android:name="com.example.etherealtherapist.Activities.SplashActivity"
-            android:exported="true" >
+            android:name=".Activities.SplashActivity"
+            android:exported="true">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
 
