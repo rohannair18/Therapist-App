@@ -10,6 +10,9 @@
         android:supportsRtl="true"
         android:theme="@style/Theme.EtherealTherapist">
         <activity
+            android:name=".Activities.CheckActivity"
+            android:exported="false" />
+        <activity
             android:name=".Activities.NoteEditorActivity"
             android:exported="false" />
         <activity

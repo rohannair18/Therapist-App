@@ -8,23 +8,31 @@ import com.example.etherealtherapist.Fragments.JournalFragment;
 import com.example.etherealtherapist.R;
 
 
+import android.content.Context;
 import android.content.Intent;
+import android.content.SharedPreferences;
 import android.os.Bundle;
 import android.text.Editable;
 import android.text.TextWatcher;
 import android.widget.EditText;
 
-public class NoteEditorActivity extends AppCompatActivity {
+import java.util.HashSet;
 
+public class NoteEditorActivity extends AppCompatActivity {
+    int noteId;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_note_editor);
         EditText editText=(EditText) findViewById(R.id.EditText);
         Intent intent=getIntent();
-        int noteId= intent.getIntExtra("noteID",-1);
+        noteId= intent.getIntExtra("noteID",-1);
         if(noteId!=-1){
            editText.setText(JournalFragment.notes.get(noteId));
+        }else {
+            JournalFragment.notes.add("");
+            noteId=JournalFragment.notes.size()-1;
+            JournalFragment.arrayAdapter.notifyDataSetChanged();
         }
         editText.addTextChangedListener(new TextWatcher() {
             @Override
@@ -36,6 +44,9 @@ public class NoteEditorActivity extends AppCompatActivity {
             public void onTextChanged(CharSequence charSequence, int i, int i1, int i2) {
                    JournalFragment.notes.set(noteId, String.valueOf(charSequence));
                    JournalFragment.arrayAdapter.notifyDataSetChanged();
+                   SharedPreferences sharedPreferences= getApplicationContext().getSharedPreferences("com.example.etherealtherapist.Activities.NoteEditorActivity", Context.MODE_PRIVATE);
+                   HashSet<String> set= new HashSet(JournalFragment.notes);
+                   sharedPreferences.edit().putStringSet("notes",set).apply();
             }
 
             @Override
