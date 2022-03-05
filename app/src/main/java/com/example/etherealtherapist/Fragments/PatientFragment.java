@@ -62,5 +62,6 @@ public class PatientFragment extends Fragment {
             }
         });
         return view;
+
     }
 }
