@@ -86,7 +86,7 @@ public class JoinActivity extends AppCompatActivity implements View.OnClickListe
                 submitjoin();
                 break;
             case R.id.alreadyjoin:
-                startActivity(new Intent(this, LoginActivity.class));
+                startActivity(new Intent(this, CreateProfile.class));
                 break;
         }
 

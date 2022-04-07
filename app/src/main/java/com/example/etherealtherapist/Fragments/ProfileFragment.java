@@ -1,6 +1,7 @@
 package com.example.etherealtherapist.Fragments;
 
 import android.content.Intent;
+import android.net.Uri;
 import android.os.Bundle;
 
 import androidx.annotation.NonNull;
@@ -19,9 +20,11 @@ import androidx.viewpager.widget.ViewPager;
 
 import com.example.etherealtherapist.Activities.EditActivity;
 import com.example.etherealtherapist.Activities.MainActivity;
+import com.example.etherealtherapist.Activities.uploadprofilepic;
 import com.example.etherealtherapist.HelperClasses.ViewPagerAdapter;
 import com.example.etherealtherapist.Model.Therapist;
 import com.example.etherealtherapist.R;
+import com.google.android.gms.tasks.Task;
 import com.google.android.material.tabs.TabLayout;
 import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.auth.FirebaseUser;
@@ -30,18 +33,24 @@ import com.google.firebase.database.DatabaseError;
 import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
 import com.google.firebase.database.ValueEventListener;
+import com.google.firebase.storage.FirebaseStorage;
+import com.google.firebase.storage.StorageReference;
+import com.squareup.picasso.Picasso;
 
 
 public class ProfileFragment extends Fragment {
 
     private TabLayout tabLayout;
     private ViewPager viewPager;
+    private FirebaseAuth firebaseAuth;
     private ImageView edit;
     private ImageView logout;
     private FirebaseUser fUser;
     private DatabaseReference reference;
     private String profileId;
     private TextView profilename;
+    private ImageView profilepic;
+    private StorageReference storageReference;
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
@@ -51,11 +60,22 @@ public class ProfileFragment extends Fragment {
 
         fUser = FirebaseAuth.getInstance().getCurrentUser();
         profileId = fUser.getUid();
+        storageReference= FirebaseStorage.getInstance().getReference();
+        profilepic=view.findViewById(R.id.Profilepic);
         profilename = view.findViewById(R.id.profilename);
         tabLayout = view.findViewById(R.id.tablayout);
         viewPager = view.findViewById(R.id.viewpager);
         logout = view.findViewById(R.id.logout);
         edit=view.findViewById(R.id.edit);
+        //Uri uri= fUser.getPhotoUrl();
+        //Picasso.with(getContext()).load(uri).into(profilepic);
+        profilepic.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+               startActivity(new Intent(getContext(), uploadprofilepic.class));
+
+            }
+        });
         logout.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
@@ -71,9 +91,18 @@ public class ProfileFragment extends Fragment {
             }
         });
         profileName();
+        //ProfilePic();
         return view;
 
     }
+
+    private void ProfilePic() {
+        FirebaseUser firebaseUser= firebaseAuth.getCurrentUser();
+        Task<Uri> url =FirebaseStorage.getInstance().getReference().child("Therapist Display Pics").child(profileId)
+                .child(firebaseUser.getUid()+".jpg").getDownloadUrl();
+        Picasso.with(getContext()).load(String.valueOf(url)).into(profilepic);
+    }
+
 
     @Override
     public void onActivityCreated(@Nullable Bundle savedInstanceState) {

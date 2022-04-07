@@ -10,10 +10,15 @@
         android:supportsRtl="true"
         android:theme="@style/Theme.EtherealTherapist">
         <activity
+            android:name=".Activities.uploadprofilepic"
+            android:exported="false" />
+        <activity
+            android:name=".Activities.CreateProfile"
+            android:exported="false" />
+        <activity
             android:name=".Activities.CheckActivity"
             android:exported="false"
-            android:screenOrientation="portrait"
-            />
+            android:screenOrientation="portrait" />
         <activity
             android:name=".Activities.NoteEditorActivity"
             android:exported="false"

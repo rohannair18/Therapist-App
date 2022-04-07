@@ -4,7 +4,9 @@ import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.appcompat.app.AppCompatDelegate;
 
+import android.content.Context;
 import android.content.Intent;
+import android.content.SharedPreferences;
 import android.os.Build;
 import android.os.Bundle;
 import android.util.Patterns;
@@ -16,6 +18,7 @@ import android.widget.EditText;
 import android.widget.ProgressBar;
 import android.widget.TextView;
 
+import com.example.etherealtherapist.Fragments.HomeFragment;
 import com.example.etherealtherapist.R;
 import com.google.android.gms.tasks.OnCompleteListener;
 import com.google.android.gms.tasks.Task;
@@ -41,11 +44,15 @@ public class LoginActivity extends AppCompatActivity implements View.OnClickList
         super.onBackPressed();
     }
 
+
+
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         AppCompatDelegate.setDefaultNightMode(AppCompatDelegate.MODE_NIGHT_NO);
         setContentView(R.layout.activity_login);
+
 
         if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.LOLLIPOP) {
             Window window = getWindow();
@@ -56,6 +63,7 @@ public class LoginActivity extends AppCompatActivity implements View.OnClickList
                 decor.setSystemUiVisibility(0);
             }
         }
+        
 
         emailsignin = findViewById(R.id.emailsignin);
         passwordsignin = findViewById(R.id.passwordsignin);
@@ -124,7 +132,7 @@ public class LoginActivity extends AppCompatActivity implements View.OnClickList
 
                             if (user.isEmailVerified()) {
                                 StyleableToast.makeText(LoginActivity.this, "Let's get started!", R.style.customtoast).show();
-                                Intent intent = new Intent(LoginActivity.this, StartActivity.class);
+                                Intent intent = new Intent(LoginActivity.this, CreateProfile.class);
                                 intent.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TASK | Intent.FLAG_ACTIVITY_CLEAR_TOP);
                                 startActivity(intent);
                                 finish();
