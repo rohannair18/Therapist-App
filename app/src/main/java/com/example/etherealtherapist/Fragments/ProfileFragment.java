@@ -132,7 +132,7 @@ public class ProfileFragment extends Fragment {
 
                             matrix.postRotate(90);
 
-                            Bitmap scaledBitmap = Bitmap.createScaledBitmap(bitmap,24 ,24 , true);
+                            Bitmap scaledBitmap = Bitmap.createScaledBitmap(bitmap,100 ,100 , true);
 
                             Bitmap rotatedBitmap = Bitmap.createBitmap(scaledBitmap, 0, 0, scaledBitmap.getWidth(), scaledBitmap.getHeight(), matrix, true);
                             profilepic.setImageBitmap(rotatedBitmap);
