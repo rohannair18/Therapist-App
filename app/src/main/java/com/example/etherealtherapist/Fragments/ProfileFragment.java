@@ -106,15 +106,7 @@ public class ProfileFragment extends Fragment {
             }
         });
         profileName();
-        /*String url= profileId+".jpg";
-        Context context= profilepic.getContext();
-        Picasso.with(context)
-                .load(url)
-                .placeholder(R.drawable.profile)
-                .error(R.drawable.profile)
-                .resize(50,50)
-                .into(profilepic);*/
-       ProfilePic();
+        ProfilePic();
         return view;
 
     }
