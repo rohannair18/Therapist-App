@@ -4,17 +4,16 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:padding="0dp"
-    tools:context=".Activities.NoteEditorActivity">
+    tools:context=".Activities.NoteDetailsActivity">
 
     <androidx.appcompat.widget.Toolbar
-        android:id="@+id/toolbarofeditnote"
+        android:id="@+id/toolbarofnotedetail"
         android:layout_width="match_parent"
-        android:layout_height="wrap_content"
+        android:layout_height="?attr/actionBarSize"
         android:background="@color/white">
 
         <com.google.android.material.card.MaterialCardView
-            android:id="@+id/enback"
+            android:id="@+id/ndback"
             android:layout_width="40dp"
             android:layout_height="40dp"
             android:layout_marginStart="15dp"
@@ -34,31 +33,32 @@
         </com.google.android.material.card.MaterialCardView>
 
 
-        <EditText
-            android:id="@+id/edittitleofnote"
+        <TextView
+            android:id="@+id/titleofnotedetail"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:background="@null"
             android:fontFamily="@font/lato_bold"
+
+            android:text="Title Displayerd Here"
             android:textColor="@color/lavender"
             android:textSize="20sp" />
 
     </androidx.appcompat.widget.Toolbar>
 
-    <EditText
-        android:id="@+id/editcontentofnote"
+    <TextView
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        android:layout_below="@id/toolbarofeditnote"
+        android:textSize="15sp"
         android:background="#faf7f7"
-        android:fontFamily="@font/lato"
         android:gravity="top|left"
-        android:padding="15dp"
+        android:fontFamily="@font/lato"
         android:textColor="@color/grey"
-        android:textSize="15sp">
+        android:hint="Enter your note content here"
+        android:layout_below="@id/toolbarofnotedetail"
+        android:padding="15dp"
+        android:id="@+id/contentofnotedetail">
 
-    </EditText>
-
+    </TextView>
 
     <com.google.android.material.floatingactionbutton.FloatingActionButton
 
@@ -69,11 +69,13 @@
         android:layout_marginBottom="30dp"
         android:layout_marginRight="30dp"
         android:layout_gravity="bottom|end"
-        android:id="@+id/saveeditnote"
-        android:src="@drawable/uparrow"
+        android:id="@+id/gotoeditnote"
+        android:src="@drawable/edit"
+        app:fabSize="normal"
         app:tint="@color/white"
-        android:background="#A1F4AB"
+        android:background="#A1F4FB"
         app:maxImageSize="30dp">
 
     </com.google.android.material.floatingactionbutton.FloatingActionButton>
+
 </RelativeLayout>

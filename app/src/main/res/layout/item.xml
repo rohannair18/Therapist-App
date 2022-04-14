@@ -9,80 +9,105 @@
     android:layout_marginBottom="30dp"
     android:backgroundTint="@color/pale_lavender">
 
-    <LinearLayout
+    <RelativeLayout
         android:layout_width="match_parent"
-        android:layout_height="match_parent"
-        android:orientation="vertical">
+        android:layout_height="match_parent">
 
-        <LinearLayout
+        <de.hdodenhof.circleimageview.CircleImageView
+            android:id="@+id/imgtherapist"
+            android:layout_width="100dp"
+            android:layout_height="100dp"
+            android:layout_marginStart="10dp"
+            android:layout_marginTop="10dp" />
+
+        <TextView
+            android:id="@+id/therapistname"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_gravity="center_vertical"
-            android:orientation="horizontal">
+            android:layout_marginStart="15dp"
+            android:layout_marginTop="15dp"
+            android:layout_toRightOf="@id/imgtherapist"
+            android:fontFamily="@font/lato_bold"
+            android:text=""
+            android:textColor="@color/dark_lavender"
+            android:textSize="18dp" />
 
-            <TextView
-                android:id="@+id/Username"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_marginStart="15dp"
-                android:layout_marginTop="15dp"
-                android:fontFamily="@font/lato"
-                android:text="Username:"
-                android:textColor="@color/black"
-                android:textSize="18dp"
-                android:textStyle="bold">
-
-            </TextView>
-
-            <TextView
-                android:id="@+id/UsernameValue"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_marginStart="15dp"
-                android:layout_marginTop="15dp"
-                android:fontFamily="@font/lato"
-                android:text="Rohan"
-                android:textColor="@color/black"
-                android:textSize="18dp"
-                android:textStyle="bold">
-
-            </TextView>
-        </LinearLayout>
-
-        <LinearLayout
+        <TextView
+            android:id="@+id/therapistemail"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_gravity="center_vertical"
-            android:orientation="horizontal">
+            android:layout_below="@id/therapistname"
+            android:text=""
+            android:textSize="13dp"
+            android:layout_marginTop="10dp"
+            android:layout_marginStart="15dp"
+            android:fontFamily="@font/lato"
+            android:textColor="@color/dark_lavender"
+            android:layout_toRightOf="@id/imgtherapist"/>
+
+        <Button
+            android:id="@+id/Accept"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_below="@+id/therapistemail"
+            android:layout_alignParentStart="true"
+            android:layout_alignParentEnd="true"
+            android:layout_alignParentBottom="true"
+            android:layout_marginStart="35dp"
+            android:layout_marginTop="85dp"
+            android:layout_marginEnd="252dp"
+            android:layout_marginBottom="7dp"
+            android:gravity="center"
+            android:backgroundTint="#00FF00"
+            android:text="Accept" />
+
+        <Button
+
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignParentStart="true"
+            android:layout_alignParentTop="true"
+            android:layout_alignParentEnd="true"
+            android:layout_alignParentBottom="true"
+            android:layout_marginStart="258dp"
+            android:layout_marginTop="146dp"
+            android:layout_marginEnd="20dp"
+            android:layout_marginBottom="5dp"
+            android:backgroundTint="#FF0000"
+            android:gravity="center"
+            android:text="Reject">
+
+        </Button>
+
+
+        <!--<ImageButton
+            android:id="@+id/imageButton"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_below="@+id/therapistemail"
+            android:layout_marginTop="84dp"
+            android:background="@drawable/roundedcircle"
+            android:text="Accept"
+            app:srcCompat="@drawable/tick" />-->
+
+        <!--<com.google.android.material.card.MaterialCardView
+            android:layout_width="match_parent"
+            android:layout_height="50dp"
+            android:layout_alignParentBottom="true"
+            android:background="@color/pale_pink"
+            android:backgroundTint="@color/pale_pink"
+            app:cardCornerRadius="20dp">
 
             <TextView
-                android:id="@+id/Email"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:layout_marginStart="15dp"
-                android:layout_marginTop="15dp"
-                android:fontFamily="@font/lato"
-                android:text="Email:"
-                android:textColor="@color/black"
-                android:textSize="18dp"
-                android:textStyle="bold">
+                android:layout_gravity="center"
+                android:text="Accept"
+                android:textColor="@color/dark_lavender"
+                android:textSize="18dp" />
+        </com.google.android.material.card.MaterialCardView>-->
 
-            </TextView>
 
-            <TextView
-                android:id="@+id/EmailValue"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_marginStart="15dp"
-                android:layout_marginTop="15dp"
-                android:fontFamily="@font/lato"
-                android:text="nairrohan18@gmail.com"
-                android:textColor="@color/black"
-                android:textSize="18dp"
-                android:textStyle="bold">
 
-            </TextView>
-        </LinearLayout>
-    </LinearLayout>
-
+    </RelativeLayout>
 </androidx.cardview.widget.CardView>

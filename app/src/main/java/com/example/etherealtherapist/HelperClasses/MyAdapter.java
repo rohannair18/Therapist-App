@@ -47,8 +47,8 @@ public class MyAdapter extends RecyclerView.Adapter<MyAdapter.MyViewHolder> {
         TextView name,email;
         public MyViewHolder(@NonNull View itemView){
             super(itemView);
-            name=itemView.findViewById(R.id.UsernameValue);
-            email=itemView.findViewById(R.id.EmailValue);
+            name=itemView.findViewById(R.id.therapistname);
+            email=itemView.findViewById(R.id.therapistemail);
         }
     }
 }

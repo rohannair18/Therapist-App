@@ -87,8 +87,8 @@ public class uploadprofilepic extends AppCompatActivity {
                     progressBar.setVisibility(View.GONE);
                     Toast.makeText(uploadprofilepic.this, "Upload Sucessfull", Toast.LENGTH_SHORT).show();
                     Intent intent= new Intent(uploadprofilepic.this, ProfileFragment.class);
-                    startActivity(intent);
-                    finish();
+                    //startActivity(intent);
+                    setIntent(intent);
                 }
             }).addOnFailureListener(new OnFailureListener() {
                 @Override

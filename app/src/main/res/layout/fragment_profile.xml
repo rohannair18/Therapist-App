@@ -59,9 +59,9 @@
             android:layout_marginEnd="17dp">
 
             <ImageView
-                android:layout_width="50dp"
+                android:layout_width="match_parent"
                 android:id="@+id/Profilepic"
-                android:layout_height="50dp"
+                android:layout_height="100dp"
                 android:background="@drawable/profile"
                 android:layout_gravity="center"/>
         </com.google.android.material.card.MaterialCardView>

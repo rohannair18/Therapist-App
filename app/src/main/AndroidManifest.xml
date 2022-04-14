@@ -10,6 +10,12 @@
         android:supportsRtl="true"
         android:theme="@style/Theme.EtherealTherapist">
         <activity
+            android:name=".Activities.NoteDetailsActivity"
+            android:exported="false" />
+        <activity
+            android:name=".Activities.CreateNotesActivity"
+            android:exported="false" />
+        <activity
             android:name=".Activities.uploadprofilepic"
             android:exported="false" />
         <activity

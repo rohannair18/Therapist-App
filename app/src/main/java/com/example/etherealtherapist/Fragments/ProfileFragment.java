@@ -1,6 +1,10 @@
 package com.example.etherealtherapist.Fragments;
 
+import android.content.Context;
 import android.content.Intent;
+import android.graphics.Bitmap;
+import android.graphics.BitmapFactory;
+import android.graphics.Matrix;
 import android.net.Uri;
 import android.os.Bundle;
 
@@ -9,11 +13,13 @@ import androidx.annotation.Nullable;
 import androidx.appcompat.app.AppCompatDelegate;
 import androidx.fragment.app.Fragment;
 
+import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.ImageView;
 import android.widget.TextView;
+import android.widget.Toast;
 
 import androidx.viewpager.widget.ViewPager;
 
@@ -24,6 +30,9 @@ import com.example.etherealtherapist.Activities.uploadprofilepic;
 import com.example.etherealtherapist.HelperClasses.ViewPagerAdapter;
 import com.example.etherealtherapist.Model.Therapist;
 import com.example.etherealtherapist.R;
+import com.google.android.gms.tasks.OnCompleteListener;
+import com.google.android.gms.tasks.OnFailureListener;
+import com.google.android.gms.tasks.OnSuccessListener;
 import com.google.android.gms.tasks.Task;
 import com.google.android.material.tabs.TabLayout;
 import com.google.firebase.auth.FirebaseAuth;
@@ -33,9 +42,15 @@ import com.google.firebase.database.DatabaseError;
 import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
 import com.google.firebase.database.ValueEventListener;
+import com.google.firebase.storage.FileDownloadTask;
 import com.google.firebase.storage.FirebaseStorage;
 import com.google.firebase.storage.StorageReference;
 import com.squareup.picasso.Picasso;
+
+import java.io.File;
+import java.io.IOException;
+import java.text.CollationElementIterator;
+
 
 
 public class ProfileFragment extends Fragment {
@@ -60,7 +75,7 @@ public class ProfileFragment extends Fragment {
 
         fUser = FirebaseAuth.getInstance().getCurrentUser();
         profileId = fUser.getUid();
-        storageReference= FirebaseStorage.getInstance().getReference();
+        storageReference= FirebaseStorage.getInstance().getReference("Therapist Display Pics/"+profileId+".jpg");
         profilepic=view.findViewById(R.id.Profilepic);
         profilename = view.findViewById(R.id.profilename);
         tabLayout = view.findViewById(R.id.tablayout);
@@ -91,16 +106,47 @@ public class ProfileFragment extends Fragment {
             }
         });
         profileName();
-        //ProfilePic();
+        /*String url= profileId+".jpg";
+        Context context= profilepic.getContext();
+        Picasso.with(context)
+                .load(url)
+                .placeholder(R.drawable.profile)
+                .error(R.drawable.profile)
+                .resize(50,50)
+                .into(profilepic);*/
+       ProfilePic();
         return view;
 
     }
 
     private void ProfilePic() {
-        FirebaseUser firebaseUser= firebaseAuth.getCurrentUser();
-        Task<Uri> url =FirebaseStorage.getInstance().getReference().child("Therapist Display Pics").child(profileId)
-                .child(firebaseUser.getUid()+".jpg").getDownloadUrl();
-        Picasso.with(getContext()).load(String.valueOf(url)).into(profilepic);
+
+        try {
+            final File localfile=File.createTempFile("Tempfile",".jpg");
+            storageReference.getFile(localfile)
+                    .addOnSuccessListener(new OnSuccessListener<FileDownloadTask.TaskSnapshot>() {
+                        @Override
+                        public void onSuccess(FileDownloadTask.TaskSnapshot taskSnapshot) {
+                            Bitmap bitmap=BitmapFactory.decodeFile(localfile.getAbsolutePath());
+                            Matrix matrix=new Matrix();
+
+                            matrix.postRotate(90);
+
+                            Bitmap scaledBitmap = Bitmap.createScaledBitmap(bitmap,24 ,24 , true);
+
+                            Bitmap rotatedBitmap = Bitmap.createBitmap(scaledBitmap, 0, 0, scaledBitmap.getWidth(), scaledBitmap.getHeight(), matrix, true);
+                            profilepic.setImageBitmap(rotatedBitmap);
+                        }
+                    }).addOnFailureListener(new OnFailureListener() {
+                @Override
+                public void onFailure(@NonNull Exception e) {
+                    Toast.makeText(getContext(), "Error occurred while retrieving/Profile Pic has not been set!", Toast.LENGTH_SHORT).show();
+                }
+            });
+        }catch (IOException e){
+            e.printStackTrace();
+        }
+
     }
 
 

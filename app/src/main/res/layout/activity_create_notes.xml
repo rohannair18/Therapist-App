@@ -4,17 +4,16 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:padding="0dp"
-    tools:context=".Activities.NoteEditorActivity">
+    tools:context=".Activities.CreateNotesActivity">
 
     <androidx.appcompat.widget.Toolbar
-        android:id="@+id/toolbarofeditnote"
+        android:id="@+id/toolbarofcreatenote"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:background="@color/white">
 
         <com.google.android.material.card.MaterialCardView
-            android:id="@+id/enback"
+            android:id="@+id/cnback"
             android:layout_width="40dp"
             android:layout_height="40dp"
             android:layout_marginStart="15dp"
@@ -35,24 +34,26 @@
 
 
         <EditText
-            android:id="@+id/edittitleofnote"
+            android:id="@+id/createtitleofnote"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:background="@null"
             android:fontFamily="@font/lato_bold"
+            android:hint="Enter your title here"
             android:textColor="@color/lavender"
             android:textSize="20sp" />
 
     </androidx.appcompat.widget.Toolbar>
 
     <EditText
-        android:id="@+id/editcontentofnote"
+        android:id="@+id/createcontentofnote"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        android:layout_below="@id/toolbarofeditnote"
+        android:layout_below="@id/toolbarofcreatenote"
         android:background="#faf7f7"
         android:fontFamily="@font/lato"
         android:gravity="top|left"
+        android:hint="Type something.."
         android:padding="15dp"
         android:textColor="@color/grey"
         android:textSize="15sp">
@@ -69,11 +70,22 @@
         android:layout_marginBottom="30dp"
         android:layout_marginRight="30dp"
         android:layout_gravity="bottom|end"
-        android:id="@+id/saveeditnote"
-        android:src="@drawable/uparrow"
+        android:id="@+id/savenote"
+        android:src="@drawable/save"
+        android:background="#A1F4FB"
         app:tint="@color/white"
-        android:background="#A1F4AB"
         app:maxImageSize="30dp">
 
     </com.google.android.material.floatingactionbutton.FloatingActionButton>
+
+    <ProgressBar
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_centerInParent="true"
+        android:visibility="invisible"
+        android:id="@+id/progressbarofcreatenote"
+        android:layout_marginTop="10dp">
+
+    </ProgressBar>
+
 </RelativeLayout>
