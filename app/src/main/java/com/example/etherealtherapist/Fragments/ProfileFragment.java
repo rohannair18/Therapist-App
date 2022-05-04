@@ -122,7 +122,7 @@ public class ProfileFragment extends Fragment {
                             Bitmap bitmap=BitmapFactory.decodeFile(localfile.getAbsolutePath());
                             Matrix matrix=new Matrix();
 
-                            matrix.postRotate(90);
+                            matrix.postRotate(0);
 
                             Bitmap scaledBitmap = Bitmap.createScaledBitmap(bitmap,100 ,100 , true);
 
